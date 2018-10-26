@@ -1,0 +1,22 @@
+h1, h2 {
+  font-family: 'Luckiest Guy', cursive;
+  color: #002147;
+  text-shadow: 1.5px 1.5px white;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar {
+  background-color: #E57200;
+  min-height: 100vh;
+  min-width: 15%;
+  padding: 15px;
+}
