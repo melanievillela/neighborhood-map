@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const restaurants = require('./restaurants');
 
-export class NeighborhoodMap extends Component {
+class NeighborhoodMap extends Component {
   static defaultProps = {
     center: {
       lat: 29.75,
       lng: -95.35
     },
-    zoom: 11
+    zoom: 11,
   };
 
   render() {
+    const Marker = ({ text }) => <div><FontAwesomeIcon icon={faUtensils} />{text}</div>;
 
     return (
-      <div className="flex" style={{ height: '100vh', width: '100%' }}>
+      <div className="flex map" style={{ height: '100vh', width: '100%'}}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyCEoezQTKEDQQzCOv71vNzfu5JrVjomoyo" }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Global Eats Houston'}
+          <Marker
+            lat={29.75}
+            lng={-95.35}
+            text={restaurants[0].retaurantName}
           />
         </GoogleMapReact>
       </div>
