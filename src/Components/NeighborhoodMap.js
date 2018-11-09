@@ -3,22 +3,32 @@ import GoogleMapReact from 'google-map-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
-const restaurants = require('./restaurants');
-
 class NeighborhoodMap extends Component {
-  restaurants = this.state;
-  
+
   static defaultProps = {
     center: {
       lat: 29.75,
       lng: -95.35
     },
     zoom: 12,
-  };
+  }
+
+  /*
+  constructor(props) {
+    super(props);
+    this.showHi = this.showHi.bind(this);
+  }
+  */
+
+  showHi = () => {
+    // This outputs correctly console.log("Works");
+    // This outputs correctly console.log(this.props.restaurant[0].country);
+    console.log(this)
+  }
 
   render() {
-    const Markers = (props) => {
-      return <div><FontAwesomeIcon icon={faUtensils} size="2x" color="#E57200" /><h1>{}</h1></div>
+    const Markers = () => {
+      return <div><FontAwesomeIcon icon={faUtensils} size="2x" color="#E57200"/></div>
     };
 
     return (
@@ -28,14 +38,18 @@ class NeighborhoodMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          {restaurants.map(restaurant => (
-            <Markers key={restaurant.key}
-              name={restaurant.restaurantName}
+          {this.props.restaurant.map(restaurant => (
+            <Markers 
+              className="marker" 
+              key={restaurant.key}
               lat={restaurant.lat}
               lng={restaurant.lng}
+              name={restaurant.retaurantName}
+              
+              onChildClick={this.showHi}
             />
           ))}
-        </GoogleMapReact>
+        </GoogleMapReact>        
       </div>
     )
   }
@@ -51,4 +65,19 @@ export default NeighborhoodMap;
             lat={29.75}
             lng={-95.35}
             text={restaurants[0].retaurantName}
+
+
+                markers.forEach(marker => {
+      marker.addEventListener("click", function(){
+        alert ("Hello World");
+      });
+    }
+
+    
+  componentDidMount: function() {
+    let markers = document.querySelectorAll(".marker");
+    markers[0].addEventListener("mouseover", function(){
+      console.log("Hello World");
+    });
+  };
           />*/

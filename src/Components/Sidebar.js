@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-const restaurants = require('./restaurants');
-
 class Sidebar extends Component {
-  restaurants = this.state;
 
   render() {
     return (
@@ -14,11 +11,11 @@ class Sidebar extends Component {
         </div>
         <div>
           <ul>
-            {restaurants.map(restaurant => (
-              <li key={restaurant.key}>{restaurant.country}</li>
+            {this.props.restaurant.map(restaurant => (
+              <li key={restaurant.key} onClick={this.props.greet}>{restaurant.country}</li>
             ))}
           </ul>
-          </div>
+        </div>
       </div>
     );
   }

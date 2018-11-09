@@ -20,6 +20,12 @@ h1, h2 {
   flex-wrap: wrap;
 }
 
+.info-window {
+  width: 100px;
+  height: 75px;
+  background-color: coral;
+}
+
 li {
   color: white;
   font-size: 1.5em;
@@ -32,4 +38,18 @@ li {
   min-height: 100%;
   min-width: 15%;
   padding: 15px;
+}
+
+@media only screen and (max-width: 500px) {
+  .main {
+    flex-direction: column;
+  }
+
+  h1, h2, ul {
+    margin: 5px;
+  }
+
+  li {
+    padding: 0;
+  }
 }

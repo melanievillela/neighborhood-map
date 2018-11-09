@@ -6,16 +6,16 @@ import NeighborhoodMap from './Components/NeighborhoodMap';
 const restaurants = require('./Components/restaurants');
 
 class App extends Component {
-  state = { 
-    name: restaurants.retaurantName,
-    country: restaurants.country   
+  constructor() {
+    super();
+    this.state = {restaurants}
   }
 
   render() {
     return (
-      <div className="flex">
-        <Sidebar />
-        <NeighborhoodMap />
+      <div className="main flex">
+        <Sidebar restaurant={this.state.restaurants}/>
+        <NeighborhoodMap restaurant={this.state.restaurants}/>
       </div>
     );
   }
